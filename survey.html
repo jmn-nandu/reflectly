@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang ="en">
+  <head>
+    <meta charset ="utf-8" >
+    <meta name ="viewport" content ="width=device-width initial-scale =1.0">
+    <title>REFLECTLY</title>
+    <link type = "icon" rel="icon" href="/images/logo.jpg">
+    <link rel ="stylesheet" href ="form.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  </head>
+  <body>
+    <nav class="navbar">
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+      <label for="nav-toggle" class="nav-toggle-label" >☰ Menu</label>
+      <div class="nav-content">
+      <ul class="nav-links">
+        <li><a href="survey.html"><i class="fas fa-home"></i>Home</a></li>
+        <li><a href="#contact"><i class="fas fa-envelope"></i>Contact</a></li>
+        <li><a href="https://github.com/jeevan-nandu" target="_blank"><i class="fab fa-github"></i>GitHub</a></li>
+        <li><a href="https://linkedin.com/in/jeevan-m-nair-10b65525b/" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/jeevan_m_nair" target="_blank"><i class="fab fa-instagram"></i>instagram</a></li>
+      </ul>
+    
+      <div class="theme-switcher">
+        <label for="themeSelector"><i class="fas fa-paint-brush"></i>Theme:</label>
+        <select id="themeSelector">
+          <option value="default">Default</option>
+          <option value="zen">Zen Mode</option>
+          <option value="ninja">Ninja Mode</option>
+          <option value="sunny">Sunny Vibes</option>
+        </select>
+      </div>
+    </div>
+    </nav>
+
+    <img id="logo" src="/images/logo.jpg"><h1 id = "title">REFLECTLY.me<hr></h1>
+    
+    
+    <p id="subtitle">daily space to<strong>REFLECT, RESET & GROW UP</strong></strong></p>
+    <br>
+    <p id="description">This short survey helps you reflect on your daily 
+        routine to identify areas for improvement and personal growth. 
+      </p>
+      <br>
+       <div id="quote-box">
+        <blockquote id="quote">Loading quote...</blockquote>
+        <cite id="author"></cite>
+       </div> 
+      <br>
+    <p id ="description">Kindly take a moment to fill out the form.</p>
+    <form id ="survey-form" action="preview.html" method="post">
+      <label for ="name" id ="name-label">
+        Name:<input id = "name" name="name" type ="text" placeholder ="Enter your name..." required>
+      </label><br>
+      <label for ="email" id ="email-label">Email :<input id ="email" name="email" type ="email" placeholder ="Enter your email-id..." required></input></label><br>
+      <label for = "age" id ="number-label">Age :<input id ="number" name="age" type ="number" min =12 max =30 placeholder ="age..." ></input>
+      </label>
+      <br>
+      <label for ="gender"><strong>Gender</strong>
+        <section class="gender">
+        <label for="male">Male</label><input type = "radio" name ="gender" value ="male">
+        <label for="female">Female</label><input type = "radio" name ="gender" value ="female">
+        </label> 
+      </section>
+        <br>
+      
+      <fieldset>
+        <label for ="dropdown">
+          <strong> what  time of the day made you feel more positive?</strong>
+          <select id ="dropdown">
+            <option  value =" "></option>
+            <option value ="morning">morning</option>
+            <option value ="afternoon">afternoon</option>
+            <option value ="evening">evening</option>
+            <option value ="night">night</option>
+            </select> 
+            </label>
+             <br>
+        <label for ="hobies"><strong>What have you done most in this day?</strong><br>
+          <label for="sports">Sports</label><input type ="checkbox" name="hobies" value ="sports">
+<label for="music">Listening Music</label><input name="hobies" type ="checkbox" value ="music">
+<label for="reading">Reading</label><input type ="checkbox" name="hobies" value ="reading">
+        <label for="cycling">Cycling</label><input type ="checkbox" name="hobies" value ="cycling">
+<br>
+<label for="hobies">Work<input type ="checkbox" name="hobies">
+<br>
+<label for="goal">
+  <strong>What goals have you accomplished today</strong><br>
+  <input type="text" name="goal" id="goal" placeholder="Write your goal..." />
+</label><br><br>
+<label for="challenge">
+  <strong>What was the biggest challenge you faced today?</strong><br>
+  <textarea id="challenge" name="challenge" placeholder="Describe your challenge..."></textarea>
+</label><br><br>
+<label for="mood">
+  <strong>How do you feel about today overall?</strong><br>
+  <select id="mood">
+    <option value="">--Select--</option>
+    <option value="great">Great</option>
+    <option value="okay">Okay</option>
+    <option value="stressed">Stressed</option>
+    <option value="unproductive">Unproductive</option>
+  </select>
+</label><br><br>
+      <br>
+      <label for="comments">Additional comments</label>
+<textarea name="comments" id="comments" placeholder="Type here..."></textarea>
+
+      </label>
+      <br>
+      <label for = "submit"><input type ="submit" id ="submit"></label>
+      
+    </fieldset>
+      
+    </form>
+    <div id="preview">
+      <h3>Submission Preview:</h3>
+      <pre id="preview-content"></pre>
+    </div>
+    <script src="surveyScript.js"></script>
+  </body>
+  <footer id="contact">
+    <h3>Get in Touch</h3>
+    <p>Email: <a href="jeevanmnair41@gmail.com">jeevanmnair41@gmail.com</a></p>
+    <div class="socials">
+      <li><a href="https://github.com/jeevan-nandu" target="_blank"><i class="fab fa-github"></i>GitHub</a></li>
+        <li><a href="https://linkedin.com/in/jeevan-m-nair-10b65525b/" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/jeevan_m_nair" target="_blank"><i class="fab fa-instagram"></i>Instagram</a></li>
+    </div>
+  </footer>
+  </html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Survey Preview</title>
+  <link rel="stylesheet" href="form.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-toggle-label" >☰ Menu</label>
+    <div class="nav-content">
+    <ul class="nav-links">
+      <li><a href="survey.html"><i class="fas fa-home"></i>Home</a></li>
+      <li><a href="#contact"><i class="fas fa-envelope"></i>Contact</a></li>
+      <li><a href="https://github.com/jeevan-nandu" target="_blank"><i class="fab fa-github"></i>GitHub</a></li>
+      <li><a href="https://linkedin.com/in/jeevan-m-nair-10b65525b/" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a></li>
+      <li><a href="https://www.instagram.com/jeevan_m_nair" target="_blank"><i class="fab fa-instagram"></i>instagram</a></li>
+    </ul>
+  
+    <div class="theme-switcher">
+      <label for="themeSelector"><i class="fas fa-paint-brush"></i>Theme:</label>
+      <select id="themeSelector">
+        <option value="zen">Zen Mode</option>
+        <option value="ninja">Ninja Mode</option>
+        <option value="sunny">Sunny Vibes</option>
+      </select>
+    </div>
+  </div>
+  </nav>
+  <h1 class="preview-h1">Survey Submission Preview
+    <hr>
+  </h1>
+  
+  <div id="preview-content"></div>
+  <button id="exportPDFBtn">Export as PDF</button>
+  <p id="daily-quote"></p>
+  <script>
+    const savedTheme = localStorage.getItem("selectedTheme");
+    if(savedTheme){
+      document.body.classList.add(savedTheme);
+    }
+
+
+    const data = JSON.parse(localStorage.getItem("survey-Data"));
+    const previewDiv = document.getElementById("preview-content");
+
+    if (data) {
+      let html = "<ul>";
+      for (let key in data) {
+        html += `<li><strong>${key}:</strong> ${data[key]}</li>`;
+      }
+      html += "</ul>";
+      previewDiv.innerHTML = html;
+    } else {
+      previewDiv.textContent = "No data available.";
+    }
+    document.getElementById("exportPDFBtn").addEventListener("click", () => {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const data = JSON.parse(localStorage.getItem("survey-Data"));
+
+    if (!data) {
+      alert("No survey data found.");
+      return;
+    }
+
+    let y = 10; // vertical position
+
+    doc.setFontSize(14);
+    doc.text("Daily Survey Submission", 10, y);
+    y += 10;
+
+    Object.entries(data).forEach(([key, value]) => {
+      const line = `${key}: ${value}`;
+      doc.setFontSize(12);
+      doc.text(line, 10, y);
+      y += 10;
+
+            if (y > 280) {
+        doc.addPage();
+        y = 10;
+      }
+    });
+    
+    doc.save("daily-survey.pdf");
+  });
+ 
+document.getElementById("daily-quote").textContent =
+  localStorage.getItem("dailyQuote") || "";
+
+
+
+  </script>
+</body>
+<footer id="contact">
+  <h3>Get in Touch</h3>
+  <p>Email: <a href="jeevanmnair41@gmail.com">jeevanmnair41@gmail.com</a></p>
+  <div class="socials">
+    <li><a href="https://github.com/jeevan-nandu" target="_blank"><i class="fab fa-github"></i>GitHub</a></li>
+      <li><a href="https://linkedin.com/in/jeevan-m-nair-10b65525b/" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a></li>
+      <li><a href="https://www.instagram.com/jeevan_m_nair" target="_blank"><i class="fab fa-instagram"></i>Instagram</a></li>
+  </div>
+</footer>
+</html>
